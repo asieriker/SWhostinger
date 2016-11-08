@@ -1,0 +1,27 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript"> 
+	function initialize() {
+		var latlng = new google.maps.LatLng(43.3072714698608, -2.010662449073834);
+		var myOptions = {
+			zoom: 2,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.SATELLITE
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		var marker = new google.maps.Marker({
+			position: map.getCenter(),
+			map: map,
+			title: 'Haz click aquí para hacer Zoom'
+		});
+			google.maps.event.addListener(marker, 'click', function() {
+			if (map.getZoom() == 2)
+				map.setZoom(20);
+			else
+				map.setZoom(2);
+		});
+		google.maps.event.addListener(map, 'click', function(e) {
+			alert('Latitud: ' + e.latLng.lat() + '\nLongitud: ' + e.latLng.lng());
+		});
+	}
+</script>
