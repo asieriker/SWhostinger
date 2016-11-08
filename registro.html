@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registro</title>
+		<script language="JavaScript">
+		var otraSeleccionada=false;
+		function vervalores(){ 
+			var sAux="";
+			var frm = document.getElementById("registro");
+			for (i=0;i<frm.elements.length;i++)
+			{ 
+				sAux += "NOMBRE: " + frm.elements[i].name + " ";
+				sAux += "VALOR: " + frm.elements[i].value + "\n" ;
+			} 
+			alert(sAux);
+		} 
+		
+		function otraEspecialidad(frm){
+			if(!otraSeleccionada){
+			var otra=document.createElement('textarea');
+			frm.appendChild(otra);
+			otraSeleccionada=true;
+			}
+		}
+
+		function ShowImagePreview( files )
+		{
+		    if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
+		    {
+		      alert('The File APIs are not fully supported in this browser.');
+		      return false;
+		    }
+
+		    if( typeof FileReader === "undefined" )
+		    {
+		        alert( "Filereader undefined!" );
+		        return false;
+		    }
+
+		    var file = files[0];
+
+		    if( !( /image/i ).test( file.type ) )
+		    {
+		        alert( "File is not an image." );
+		        return false;
+		    }
+
+		    reader = new FileReader();
+		    reader.onload = function(event) 
+		            { var img = new Image; 
+		              img.onload = UpdatePreviewCanvas; 
+		              img.src = event.target.result;  }
+		    reader.readAsDataURL( file );
+		}
+
+		function UpdatePreviewCanvas()
+		{
+		    var img = this;
+		    var canvas = document.getElementById( 'previewcanvas' );
+
+		    if( typeof canvas === "undefined" 
+		        || typeof canvas.getContext === "undefined" )
+		        return;
+
+		    var context = canvas.getContext( '2d' );
+
+		    var world = new Object();
+		    world.width = canvas.offsetWidth;
+		    world.height = canvas.offsetHeight;
+
+		    canvas.width = world.width;
+		    canvas.height = world.height;
+
+		    if( typeof img === "undefined" )
+		        return;
+
+		    var WidthDif = img.width - world.width;
+		    var HeightDif = img.height - world.height;
+
+		    var Scale = 0.0;
+		    if( WidthDif > HeightDif )
+		    {
+		        Scale = world.width / img.width;
+		    }
+		    else
+		    {
+		        Scale = world.height / img.height;
+		    }
+		    if( Scale > 1 )
+		        Scale = 1;
+
+		    var UseWidth = Math.floor( img.width * Scale );
+		    var UseHeight = Math.floor( img.height * Scale );
+
+		    var x = Math.floor( ( world.width - UseWidth ) / 2 );
+		    var y = Math.floor( ( world.height - UseHeight ) / 2 );
+
+		    context.drawImage( img, x, y, UseWidth, UseHeight );  
+		}
+
+		function previsualizar($ruta) {
+			document.getElementById('sample').src = $ruta;
+			alert($ruta); //ver que toma el navegador del campo file
+		}
+
+		function verificar(){ 
+			valor = document.getElementById("nombreyapellidos").value;
+			if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ){
+				alert("Introduce Nombre y apellidos");
+				return false;
+			}
+			
+			valor = document.getElementById("direcciondecorreo").value;
+			if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ){
+				alert("Introduce un correo");
+				return false;
+			}
+			
+			valor = document.getElementById("password").value;
+			if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ){
+				alert("Introduce un password");
+				return false;
+			}
+			
+			valor = document.getElementById("numerodetelefono").value;
+			if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ){
+				alert("Introduce un telefono");
+				return false;
+			}
+			return verificarNombreApellidos();
+
+		}
+
+		function verificarNombreApellidos(){
+			patron = document.getElementById("nombreyapellidos").value;
+			var re = new RegExp("[A-Z]+[a-z]* [A-Z]+[a-z]* [A-Z]+[a-z]*");
+			if (!re.test(patron)) {
+				alert("Introduce un nombre y dos apellidos (primera letra en mayúscula)");
+				return false;
+			}
+			return verificarEMail();
+		}
+
+		function verificarEMail(){
+			patron = document.getElementById("direcciondecorreo").value;
+			
+			var re = new RegExp("^[a-zA-Z]+[0-9]{3}@ikasle.ehu.(es|eus)$");
+			if ( !re.test(patron) ){
+				alert("Introduce un email valido.\n Ejemplo: jvadillo001@ikasle.ehu.eus");
+				return false;
+			}
+			return verificarPassword();
+		}
+
+		function verificarPassword(){
+			patron = document.getElementById("password").value;
+			var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
+			var re = new RegExp(regex);
+			if(!re.test(patron)){
+				alert("La clave introducida no cumple los requisitos: \n \n Minimo 8 caracteres \n Maximo 15 \n Al menos una letra mayúscula \n Al menos una letra minuscula \n Al menos un digito No espacios en blanco \n Al menos 1 caracter especial");
+				return false;
+			}
+			return verificarPhone();
+		}
+
+		function verificarPhone(){
+			patron = document.getElementById("numerodetelefono").value;
+			var re = new RegExp("^[0-9]{9}$");
+			if(!re.test(patron)){
+				alert("Introduce un numero de telefono valido; 9 dígitos");
+				return false;
+			}
+			return true;
+		}
+		
+		</script>
+
+	</head>
+	<body>
+	<h1>Registro</h1>
+		<form form id='registro' name='registro' onSubmit='return verificar()' enctype="multipart/form-data" method="POST" action="registrarConFoto.php">
+
+			Nombre y apellidos*: <input type="text" name="nombreyapellidos" id="nombreyapellidos"><br><br>
+
+			Direccion de correo*: <input type="text" name="direcciondecorreo" id="direcciondecorreo"><br><br>
+
+			Password*: <input type="password" name="password" id="password" ><br><br>
+
+			Numero de telefono*: <input type="text" name="numerodetelefono" id="numerodetelefono"><br><br>
+			
+			Especialidad*: <br><input type="radio" name="especialidad" value="IS" checked>Ingenieria del Software<br>
+						  <input type="radio" name="especialidad" value="IC">Ingenieria de Computadores<br>
+						  <input type="radio" name="especialidad" value="C">Computacion<br>
+						  <input type="radio" name="especialidad" value="O" onclick="JavaScript:otraEspecialidad(this.form)">Otra<br><br>
+						  
+			Tecnologias y herramientas en las que estas interesado: <input type="textarea" rows="4" cols="50" name="intereses" id="intereses"><br><br>
+   			<input type="file" id="foto" name="foto" onchange="return ShowImagePreview( this.files );" /><br><br>
+			<div id="previewcanvascontainer"><canvas id="previewcanvas"></canvas></div>
+			<br><input type="submit" value="Enviar"><br><br>
+			
+		</form>
+
+		<a href="layout.html">Volver</a>
+	</body>
+</html>

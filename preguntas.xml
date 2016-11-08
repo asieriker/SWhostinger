@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<assessmentItems>
+	<assessmentItem complexity="2" subject="Web">
+		<itemBody>
+			<p>Tag HTML para a&#xF1;adir un formulario</p>
+		</itemBody>
+		<correctResponse>
+			<value>
+				FORM
+			</value>
+		</correctResponse>
+	</assessmentItem>
+		<assessmentItem complexity="4" subject="Internet">
+		<itemBody>
+			<p>Este protocolo acabar&#xE1; funcionando
+			incluso entre dos latas unidas por un cord&#xF3;n</p>
+		</itemBody>
+		<correctResponse>
+			<value>
+				TCP/IP
+			</value>
+		</correctResponse>
+	</assessmentItem>
+<assessmentItem subject="Web" complexity=""><itemBody><p>Es lo mismo internet y la web</p></itemBody><correctResponse><value>No</value></correctResponse></assessmentItem><assessmentItem subject="Web" complexity=""><itemBody><p>Que significa PHP</p></itemBody><correctResponse><value>PHP</value></correctResponse></assessmentItem><assessmentItem subject="Webito" complexity="3"><itemBody><p>Quien es el profesor de SW</p></itemBody><correctResponse><value>Vadillo</value></correctResponse></assessmentItem><assessmentItem subject="aaaa" complexity="2"><itemBody><p>aaaa</p></itemBody><correctResponse><value>aaaaa</value></correctResponse></assessmentItem><assessmentItem subject="Web" complexity="5"><itemBody><p>Quien invento la web?</p></itemBody><correctResponse><value>Vadillo</value></correctResponse></assessmentItem><assessmentItem subject="Web" complexity="1"><itemBody><p>Quien invento la web?</p></itemBody><correctResponse><value>Vadillo</value></correctResponse></assessmentItem><assessmentItem subject="Web" complexity="3"><itemBody><p>Quien invento la web?</p></itemBody><correctResponse><value>Vadillo</value></correctResponse></assessmentItem></assessmentItems>
