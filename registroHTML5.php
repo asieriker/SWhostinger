@@ -231,8 +231,8 @@
 		}else{
 			require_once('nusoap-0.9.5/lib/nusoap.php');
 			require_once('nusoap-0.9.5/lib/class.wsdlcache.php');
-			$soapclient = new nusoap_client( 'http://asiksw.hol.es/LabServiciosWeb/comprobarmatricula.php?wsdl',true);
-			$resultadoEmail= $soapclient->call('comprobarMatricula', array('x'=>$_POST['direcciondecorreo'])); 		  
+			$soapclient = new nusoap_client( 'http://cursodssw.hol.es/comprobarmatricula.php?wsdl',true);
+	                $resultadoEmail= $soapclient->call('comprobar', array('x'=>$_POST['direcciondecorreo'])); 		  
 			require_once("nusoap-0.9.5/lib/nusoap.php");
 			require_once("nusoap-0.9.5/lib/class.wsdlcache.php");
 			$soapclient = new nusoap_client( "http://asiksw.hol.es/LabServiciosWeb/crearWSDL.php?wsdl",true);

@@ -3,7 +3,7 @@
 	require_once('nusoap-0.9.5/lib/nusoap.php');
 	require_once('nusoap-0.9.5/lib/class.wsdlcache.php');
 	//creamos el objeto de tipo soap_server
-	$ns="http://asiksw.hol.es/LabServiciosWeb/nusoap-0.9.5/samples/";
+	$ns="http://localhost/SWhostinger/nusoap-0.9.5/samples/";
 	$server = new soap_server;
 	$server->configureWSDL("comprobarMatricula",$ns);
 	$server->wsdl->schemaTargetNamespace=$ns;
