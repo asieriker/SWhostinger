@@ -4,36 +4,61 @@
 		<title>Creditos</title>
 		<link rel='stylesheet' href='estilos/solutionyellow/default.css' />
 	 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-		<!--COPIADO-->
-	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	    <script type="text/javascript" src="ipmapper.js"></script>
-	 
-	    <script type="text/javascript">
-	    $(function(){
-	        try{
-	            IPMapper.initializeMap("map");
-	            IPMapper.addIPMarker("8.8.8.8");
-	        } catch(e){
-	            //handle error
-	        }
-	    });
-	    </script>
-	    <!--COPIADO-->
 	</head>
-	<body>
+	<body onload="getLocation()">
 		<p> <h1 align=center>Iker Redondo & Asier Tamayo </h1></p> 
 		<p><h3 align=center><i>Especialidad:</i> Ingenieria del software</h3></p>
 		<p><div align="center"> <img src="imagenes/Asiertaiker.jpg" alt="foto" border="4"></div></p>
+		<div id="demo"></div>
+		<div id="mapholder" style="width:800px; margin:0 auto;"></div>
 		<hr></hr>
-
-		<!--COPIADO-->
-	    <input id="ip" name="ip" type="text" />
-	    <button onclick="IPMapper.addIPMarker($('#ip').val());">Geocode</button>
-	    <div id="map" style="height: 500px;"></div>
-		<!--COPIADO-->
-
 		<p align="center"><a href="layout.html">Volver</a></p>
+	<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+	<script>
+	var x = document.getElementById("demo");
+	function getLocation() {
+	    if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(showPosition, showError);
+	    } else {
+	        x.innerHTML = "Geolocation is not supported by this browser.";
+	    }
+	}
+
+	function showPosition(position) {
+	    lat = position.coords.latitude;
+	    lon = position.coords.longitude;
+	    latlon = new google.maps.LatLng(lat, lon)
+	    mapholder = document.getElementById('mapholder')
+	    mapholder.style.height = '250px';
+	    mapholder.style.width = '500px';
+
+	    var myOptions = {
+	    center:latlon,zoom:14,
+	    mapTypeId:google.maps.MapTypeId.ROADMAP,
+	    mapTypeControl:false,
+	    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+	    }
+	    
+	    var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+	    var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+	}
+
+	function showError(error) {
+	    switch(error.code) {
+	        case error.PERMISSION_DENIED:
+	            x.innerHTML = "User denied the request for Geolocation."
+	            break;
+	        case error.POSITION_UNAVAILABLE:
+	            x.innerHTML = "Location information is unavailable."
+	            break;
+	        case error.TIMEOUT:
+	            x.innerHTML = "The request to get user location timed out."
+	            break;
+	        case error.UNKNOWN_ERROR:
+	            x.innerHTML = "An unknown error occurred."
+	            break;
+	    }
+	}
+	</script>
 	</body>
 </html>
