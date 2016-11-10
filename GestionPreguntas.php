@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?
+session_start();
+if(!isset($_SESSION['email'])){
+	 echo "<SCRIPT type='text/javascript'> //not showing me this
+        alert('No has iniciado sesion correctamente');
+        window.location.replace(\"Layout.html\");
+    </SCRIPT>";
+}
+?>
+
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
@@ -16,6 +26,7 @@
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
+			<span class="right">Sesion iniciada como <?echo $_SESSION['email'];?></span>
       		<span class="right"><a href="Logout.php">Logout</a></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
@@ -25,15 +36,15 @@
 	</nav>
     <section class="main" id="s1">
     
-	<div>
+	
 		<div id="numPreguntas"><p>Aparecera el numero de preguntas</p></div>
 
 	<form id="pregunta" >     
-		<h2>Añadir pregunta </h2>                
-		<p> Asignatura: <input type="text" required id="asig" name="asig" size="50" value="" />		
-		<p> Pregunta: <input type="text" required id="preg" name="preg" size="50" value="" />   
-		<p> Respuesta: <input type="text" required id="resp" name="resp" size="50" value="" />
-		<p> Complejidad (1,5): <input type="number" min="1" max="5" id="comp" name="comp" size="50" value="" />
+		<h2>Añadir pregunta </h2><br>                
+		<p> Asignatura: <input type="text" required id="asig" name="asig" size="50" value="" /><br><br> 		
+		<p> Pregunta: <input type="text" required id="preg" name="preg" size="50" value="" /><br><br>
+		<p> Respuesta: <input type="text" required id="resp" name="resp" size="50" value="" /><br><br>
+		<p> Complejidad (1,5): <input type="number" min="1" max="5" id="comp" name="comp" size="50" value="" /><br><br>
 	</form>
 
 	<form>  
@@ -41,11 +52,10 @@
 		<input type = "button" value = "Insertar pregunta" onclick = "verificar()">  
 	</form>  
 	<div id="insertado">  
-		<p></p>  
 	</div> 
 	<div id="resultado">  <p>Apareceran las preguntas del documento XML</p> </div><br><br>
 	<a href="layout.html">Volver</a>
-	</div>
+ 
     </section>
 	<footer class='main' id='f1'>
 		<p><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">Que es un Quiz?</a></p>
@@ -54,14 +64,7 @@
 </div>
 </body>
 </html>
-<?
-session_start();
-if(!isset($_SESSION['email'])){
-	echo '<script language="javascript">alert("No estas correctamente identificado");</script>'; 
-	header("Location: layout.html");
-}
 
-?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 		<script>
 		setInterval(function numeroPreguntas(){
