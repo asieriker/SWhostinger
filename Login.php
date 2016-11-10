@@ -68,8 +68,13 @@
 			}
 			mysqli_close($link); 
 			session_start();
-			$_SESSION["autentificado"]="SI";
-			header("Location: GestionPreguntas.php?email=$email");
+			$_SESSION["email"]=$email;
+			if($email=="web000@ehu.es"){
+				$_SESSION["rol"]="profesor";
+				header("Location: Revisar.php");
+			}
+			$_SESSION["rol"]="alumno";
+			header("Location: GestionPreguntas.php");
 		}else{
 			echo '<script language="javascript">alert("Datos incorrectos");</script>'; 
 		}

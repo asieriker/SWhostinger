@@ -9,7 +9,6 @@
 
 	<form id="pregunta" >     
 		<h2>Añadir pregunta </h2>                
-		<input type="hidden" name="email" id="email" value="<?php echo $_GET['email']?>" >     
 		<p> Asignatura: <input type="text" required id="asig" name="asig" size="50" value="" />		
 		<p> Pregunta: <input type="text" required id="preg" name="preg" size="50" value="" />   
 		<p> Respuesta: <input type="text" required id="resp" name="resp" size="50" value="" />
@@ -27,12 +26,18 @@
 	
 </body>
 </html>
+<?
+session_start();
+if(!isset($_SESSION['email'])){
+	header("Location: layout.html");
+}
 
+?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 		<script>
 		setInterval(function numeroPreguntas(){
 		$.ajax({
-			url: 'numPreguntas.php?email='+ document.getElementById('email').value,
+			url: 'numPreguntas.php',
 			beforeSend:function(){
 				$('#numPreguntas').html('<div><img src="imagenes/libelula.gif"/></div>')},
 			success:function(datos){
