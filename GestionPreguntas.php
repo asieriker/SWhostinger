@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['email'])){
 	 echo "<SCRIPT type='text/javascript'> //not showing me this
         alert('No has iniciado sesion correctamente');
-        window.location.replace(\"Layout.html\");
+        window.location.replace(\"layout.html\");
     </SCRIPT>";
 }
 ?>
