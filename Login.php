@@ -30,11 +30,11 @@
 	<div>
 		<form id="login" action="Login.php"   method="post">           
 		<h2>Identificación de usuario </h2>                
-		<p> Email   : <input type="email"  required id="email" name="email" size="21" value="" />                
-		<p> Password: <input type="password" required id="pass" name="pass" size="21" value="" />
-		<p> Repetir Password: <input type="password" required id="pass2" name="pass2" size="21" value="" />
-		<p> <input id="input" type="submit" value="Inicar sesion"/>
-	</form>
+			Email   : <input type="email"  required id="email" name="email" size="21" value="" /><br>               
+			Password: <input type="password" required id="pass" name="pass" size="21" value="" /><br>
+			Repetir Password: <input type="password" required id="pass2" name="pass2" size="21" value="" /><br>
+			<input id="input" type="submit" value="Inicar sesion"/>
+		</form>
 	</div>
     </section>
 	<footer class='main' id='f1'>
@@ -67,12 +67,13 @@
 				die('Error: ' . mysqli_error($link));
 			}
 			mysqli_close($link); 
+			session_start();
+			$_SESSION["autentificado"]="SI";
 			header("Location: GestionPreguntas.php?email=$email");
+		}else{
+			echo '<script language="javascript">alert("Datos incorrectos");</script>'; 
 		}
 	}
 	}
-	else {echo '<script language="javascript">alert("Datos incorrectos");</script>'; 
-	}
 	
 ?>
-
