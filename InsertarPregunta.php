@@ -1,11 +1,15 @@
 <?php
+	if(!isset($_SESSION['email'])){
+	echo '<script language="javascript">alert("No estas correctamente identificado");</script>'; 
+	header("Location: layout.html");
+	}
 	if (isset($_GET['preg']) && isset($_GET['asig']) && isset($_GET['resp']) && ($_GET['preg']!="")&& ($_GET['asig']!="")&& ($_GET['resp']!="")){
 		$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
 		if (!$link){
 			echo "Fallo al conectar a MySQL: " . $mysqli->connect_error;
 		}
 
-		$email=$_GET['email'];
+		$email=$_SESSION['email'];
 		$asig=$_GET['asig'];
 		$preg=$_GET['preg']; 
 		$resp=$_GET['resp'];

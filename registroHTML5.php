@@ -143,8 +143,8 @@
 						}else if(datos=="INVALIDA"){
 								document.getElementById('contraseñaValida').innerHTML="Contraseña no valida";    
 						}else{
-                                                                document.getElementById('contraseñaValida').innerHTML="Contraseña donde estas? En un castillo?";  
-                                                }
+                               document.getElementById('contraseñaValida').innerHTML="Contraseña donde estas? En un castillo?";  
+                        }
 					},
 					error:function(){
 						$('#contraseñaValida').fadeIn().html('<p class="error"><strong>El servidor parece que no responde</p>');

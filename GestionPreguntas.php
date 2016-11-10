@@ -29,6 +29,7 @@
 <?
 session_start();
 if(!isset($_SESSION['email'])){
+	echo '<script language="javascript">alert("No estas correctamente identificado");</script>'; 
 	header("Location: layout.html");
 }
 
@@ -109,7 +110,7 @@ setInterval(function pedirNumPreguntas()
 				alert(xmlhttp.responseText);
 			}
 		}
-		xmlhttp.open("GET","InsertarPregunta.php?email="+ document.getElementById('email').value+ "&asig=" + document.getElementById("asig").value + "&preg=" + document.getElementById("preg").value + "&resp=" + document.getElementById("resp").value + "&comp=" +document.getElementById("comp").value, true);
+		xmlhttp.open("GET","InsertarPregunta.php?asig=" + document.getElementById("asig").value + "&preg=" + document.getElementById("preg").value + "&resp=" + document.getElementById("resp").value + "&comp=" +document.getElementById("comp").value, true);
 		xmlhttp.send();
 	}
 </script>
