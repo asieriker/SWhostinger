@@ -22,8 +22,8 @@
 	<div id="insertado">  
 		<p></p>  
 	</div> 
-	<div id="resultado">  <p>Apareceran las preguntas del documento XML</p> </div>
-	
+	<div id="resultado">  <p>Apareceran las preguntas del documento XML</p> </div><br><br>
+	<a href="layout.html">Volver</a>
 </body>
 </html>
 <?

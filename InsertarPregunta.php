@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	if(!isset($_SESSION['email'])){
 	echo '<script language="javascript">alert("No estas correctamente identificado");</script>'; 
 	header("Location: layout.html");
