@@ -198,7 +198,7 @@
 		</form>
 		
 		<?php
-	if(isset($_POST['nombreyapellidos'])&&isset($_POST['direcciondecorreo'])&&isset($_POST['password'])&&isset($_POST['numerodetelefono'])&&isset($_POST['ticket'])&&isset($_POST['password2'])
+	if(isset($_POST['nombreyapellidos'])&&isset($_POST['direcciondecorreo'])&&isset($_POST['password'])&&isset($_POST['numerodetelefono'])&&isset($_POST['ticket'])&&isset($_POST['password'])
 	){ 
 		//Crear conexiÃ³n
 		$mysqli = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
@@ -210,6 +210,8 @@
 		$rutaEnServidor='./imagenes';
 		$rutaTemporal=$_FILES['foto']['tmp_name'];
 		$nombreImagen=$_FILES['foto']['name'];
+		$pass2=$_POST['password2'];
+		$pass=$_POST['password'];
 
 		if (empty($nombreImagen)) {
 			$nombreImagen='nodisponible.png';
@@ -230,6 +232,8 @@
 		}else if(!preg_match("/^[0-9]{9}$/", $_POST['numerodetelefono']))
 		{
 			echo '<script language="javascript">alert("El numero de telefono introducido es incorrecto");</script>';				
+		}else if($pass!=$pass2){
+		echo '<script language="javascript">alert("Las contraseñas no coinciden");</script>'; 
 		}else{
 			require_once('nusoap-0.9.5/lib/nusoap.php');
 			require_once('nusoap-0.9.5/lib/class.wsdlcache.php');
