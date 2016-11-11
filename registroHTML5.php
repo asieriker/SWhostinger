@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<title>RegistroHTML5</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
 		<link rel='stylesheet' type='text/css' href='estilos/style.css' />
 		<link rel='stylesheet' 
 		   type='text/css' 
@@ -165,8 +167,7 @@
 	<body>
 		<div id='page-wrap'>
 			<header class='main' id='h1'>
-				<span class="right"><a href="registro.html">Registrarse</a></span>
-				<span class="right"><a href="Login.php">Login</a></span>
+				<span class="right"><a href="Login.php"> ¿Ya tiene una cuenta? Inicia sesión </a></span>
 					<span class="right" style="display:none;"><a href="/logout">Logout</a></span>
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>

@@ -1,8 +1,13 @@
 
 <?php
-
+$servername = getenv('IP');
+$username = getenv('C9_USER');
+$password = "";
+$dbport = 3306;
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, "quiz", $dbport);
 //Crear conexiÃ³n
-$mysqli = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
+//$mysqli = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
 if (!$mysqli)
 {
 echo "Fallo al conectar a MySQL: " . $mysqli->connect_error;

@@ -3,7 +3,14 @@
 		if(!isset($_SESSION['email'])){
 			header("Location: layout.html");
 		}
-		$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
+		
+		$servername = getenv('IP');
+		$username = getenv('C9_USER');
+		$password = "";
+		$dbport = 3306;
+	    // Create connection
+	    $link = new mysqli($servername, $username, $password, "quiz", $dbport);
+		//$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
 		if (!$link){
 			echo "Fallo al conectar a MySQL: " . $mysqli->connect_error;
 		}

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<?
+<?php
 session_start();
 if(!isset($_SESSION['email'])){
-	 echo "<SCRIPT type='text/javascript'> //not showing me this
-        alert('No has iniciado sesion correctamente');
-        window.location.replace(\"layout.html\");
+echo "<SCRIPT type='text/javascript'> //not showing me this
+     alert('No has iniciado sesion correctamente');
+     window.location.replace(\"layout.html\");
     </SCRIPT>";
 }
 ?>
@@ -26,7 +26,7 @@ if(!isset($_SESSION['email'])){
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-			<span class="right">Sesion iniciada como <?echo $_SESSION['email'];?></span>
+			<span class="right">Sesion iniciada como <?php echo $_SESSION['email']?> </span>
       		<span class="right"><a href="Logout.php">Logout</a></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>

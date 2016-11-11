@@ -16,9 +16,6 @@
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-		<span class="right"><a href="registroHTML5.php">Registrarse</a></span>
-      		<span class="right"><a href="Login.php">Login</a></span>
-      		<span class="right" style="display:none;"><a href="/logout">Logout</a></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
@@ -32,9 +29,11 @@
 		<h2>Identificación de usuario </h2><br>
 			Email   : <input type="email"  required id="email" name="email" size="21" value="" /><br><br>               
 			Password: <input type="password" required id="pass" name="pass" size="21" value="" /><br><br>
-			Repetir Password: <input type="password" required id="pass2" name="pass2" size="21" value="" /><br><br>
+			
 			<input id="input" type="submit" value="Inicar sesion"/>
-		</form>
+		</form><br><br>
+		<p align="center"><a href="layout.html">Volver</a></p>
+
 	</div>
     </section>
 	<footer class='main' id='f1'>
@@ -45,18 +44,21 @@
 </body>
 </html>
 <?php
-	if (isset($_POST['email']) && isset($_POST['pass'])&&isset($_POST['pass2'])){
-		$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
+	if (isset($_POST['email']) && isset($_POST['pass'])){
+		$servername = getenv('IP');
+		$username = getenv('C9_USER');
+		$password = "";
+		$dbport = 3306;
+	    // Create connection
+	    $link = new mysqli($servername, $username, $password, "quiz", $dbport);
+		//$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
 		if (!$link){
 			echo "Fallo al conectar a MySQL: " . $mysqli->connect_error;
 		}
 	
 	$email=$_POST['email'];
 	$pass=$_POST['pass']; 
-	$pass2=$_POST['pass2'];
-	if($pass!=$pass2){
-		echo '<script language="javascript">alert("Las contraseñas no coinciden");</script>'; 
-	}else{
+
 		$usuarios = mysqli_query($link,"select * from usuario where Correo='$email' and Contrasena='$pass'"); 
 		$cont= mysqli_num_rows($usuarios); 
 			
@@ -71,22 +73,22 @@
 			$_SESSION["email"]=$email;
 			if($email=="web000@ehu.es"){
 				$_SESSION["rol"]="profesor";
-				echo "<SCRIPT type='text/javascript'> //not showing me this
-	    		 alert('Soy alumno ah no, soy profesor');
-	    		 window.location.replace(\"Revision.php\");
-	    		</SCRIPT>";
+				echo ("<SCRIPT LANGUAGE='JavaScript'>
+			    window.alert('Soy alumno, ah no, soy profe jjjj')
+			    window.location.href='Revision.php';
+			    </SCRIPT>");
 			}else{
 				$_SESSION["rol"]="alumno";
-				echo "<SCRIPT type='text/javascript'> //not showing me this
-    			 alert('Soy alumno');
-    			 window.location.replace(\"GestionPreguntas.php\");
-    			</SCRIPT>";
+				echo ("<SCRIPT LANGUAGE='JavaScript'>
+    			window.alert('Soy alumno, el de arriba es un profe pero yo no')
+				 window.location.href='GestionPreguntas.php';
+			    </SCRIPT>");
 			
 			}
 		}else{
 			echo '<script language="javascript">alert("Datos incorrectos");</script>'; 
 		}
-	}
+	
 	}
 	
 ?>

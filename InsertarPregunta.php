@@ -1,11 +1,17 @@
 <?php
 	session_start();
 	if(!isset($_SESSION['email'])){
-	echo '<script language="javascript">alert("No estas correctamente identificado");</script>'; 
 	header("Location: layout.html");
-	}
+}
+
 	if (isset($_GET['preg']) && isset($_GET['asig']) && isset($_GET['resp']) && ($_GET['preg']!="")&& ($_GET['asig']!="")&& ($_GET['resp']!="")){
-		$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
+		$servername = getenv('IP');
+		$username = getenv('C9_USER');
+		$password = "";
+		$dbport = 3306;
+	    // Create connection
+	    $link = new mysqli($servername, $username, $password, "quiz", $dbport);
+		//$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
 		if (!$link){
 			echo "Fallo al conectar a MySQL: " . $mysqli->connect_error;
 		}
