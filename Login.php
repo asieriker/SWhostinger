@@ -29,10 +29,10 @@
     
 	<div>
 		<form id="login" action="Login.php"   method="post">           
-		<h2>Identificación de usuario </h2>                
-			Email   : <input type="email"  required id="email" name="email" size="21" value="" /><br>               
-			Password: <input type="password" required id="pass" name="pass" size="21" value="" /><br>
-			Repetir Password: <input type="password" required id="pass2" name="pass2" size="21" value="" /><br>
+		<h2>Identificación de usuario </h2><br>
+			Email   : <input type="email"  required id="email" name="email" size="21" value="" /><br><br>               
+			Password: <input type="password" required id="pass" name="pass" size="21" value="" /><br><br>
+			Repetir Password: <input type="password" required id="pass2" name="pass2" size="21" value="" /><br><br>
 			<input id="input" type="submit" value="Inicar sesion"/>
 		</form>
 	</div>
@@ -71,10 +71,18 @@
 			$_SESSION["email"]=$email;
 			if($email=="web000@ehu.es"){
 				$_SESSION["rol"]="profesor";
-				header("Location: Revisar.php");
+				echo "<SCRIPT type='text/javascript'> //not showing me this
+	    		 alert('Soy alumno ah no, soy profesor');
+	    		 window.location.replace(\"Revision.php\");
+	    		</SCRIPT>";
+			}else{
+				$_SESSION["rol"]="alumno";
+				echo "<SCRIPT type='text/javascript'> //not showing me this
+    			 alert('Soy alumno');
+    			 window.location.replace(\"GestionPreguntas.php\");
+    			</SCRIPT>";
+			
 			}
-			$_SESSION["rol"]="alumno";
-			header("Location: GestionPreguntas.php");
 		}else{
 			echo '<script language="javascript">alert("Datos incorrectos");</script>'; 
 		}

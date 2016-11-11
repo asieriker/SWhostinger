@@ -179,6 +179,8 @@
 			
 			Password*: <input type="password" name="password" id="password" onchange="contrasenaAJAX()" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$" required oninvalid="this.setCustomValidity('La clave introducida no cumple los requisitos: \n \n Minimo 8 caracteres \n Maximo 15 \n Al menos una letra mayúscula \n Al menos una letra minuscula \n Al menos un dígito No espacios en blanco \n Al menos 1 caracter especial')" oninput="setCustomValidity('')"/>
 
+			Repetir Password: <input type="password" required id="password2" name="password2" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$" value="" /><br><br>
+			
 			Ticket(4 dígitos, 0000 ticket valido): <input type="text" name="ticket" id="ticket" onchange="contrasenaAJAX()" pattern="^[0-9]{4}$" required oninvalid="ta mal" oninput="setCustomValidity('')"/>
 			<br>
 			<div id="contraseñaValida"></div><br><br> 
@@ -196,7 +198,7 @@
 		</form>
 		
 		<?php
-	if(isset($_POST['nombreyapellidos'])&&isset($_POST['direcciondecorreo'])&&isset($_POST['password'])&&isset($_POST['numerodetelefono'])&&isset($_POST['ticket'])
+	if(isset($_POST['nombreyapellidos'])&&isset($_POST['direcciondecorreo'])&&isset($_POST['password'])&&isset($_POST['numerodetelefono'])&&isset($_POST['ticket'])&&isset($_POST['password2'])
 	){ 
 		//Crear conexiÃ³n
 		$mysqli = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
