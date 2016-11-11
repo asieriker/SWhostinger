@@ -106,6 +106,15 @@
 					document.getElementById('sample').src = $ruta;
 					alert($ruta); //ver que toma el navegador del campo file
 				}
+				
+				function contrasenasIguales(){
+					if(document.getElementById('password').value==document.getElementById('password2').value){
+						return true;
+					}else{ 
+						alert("Las contraseñas no coincidan");
+						return false;
+					}
+				}
 			</script>
 			
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
@@ -140,10 +149,8 @@
 							document.getElementById('contraseñaValida').innerHTML="Contraseña valida";
 						}else if (datos == "USUARIO NO AUTORIZADO") {
 								document.getElementById('contraseñaValida').innerHTML="Usuario no autorizado";    
-						}else if(datos=="INVALIDA"){
-								document.getElementById('contraseñaValida').innerHTML="Contraseña no valida";    
 						}else{
-                               document.getElementById('contraseñaValida').innerHTML="Contraseña donde estas? En un castillo?";  
+                               document.getElementById('contraseñaValida').innerHTML="Contraseña no valida";  
                         }
 					},
 					error:function(){
@@ -170,7 +177,7 @@
 	<section class="main" id="s1">
 	<div>
 	<h1>Registro</h1><br/>
-		<form form id='registro' name='registro' enctype="multipart/form-data" method="POST" action="registroHTML5.php">
+		<form form id='registro' name='registro' enctype="multipart/form-data" method="POST" action="registroHTML5.php" onSubmit="return contrasenasIguales()">
 
 			Nombre y apellidos*: <input type="text" name="nombreyapellidos" id="nombreyapellidos" pattern="[A-Z]+[a-z]* [A-Z]+[a-z]* [A-Z]+[a-z]*" required oninvalid="this.setCustomValidity('Introduce Nombre y dos apellidos')" oninput="setCustomValidity('')"/><br><br>
 
