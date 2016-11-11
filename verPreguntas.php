@@ -16,13 +16,23 @@
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-		<span class="right"><a href="registroHTML5.php">Registrarse</a></span>
-		<span class="right"><a href="Login.php">Login</a></span>
-      		<span class="right" style="display:none;"><a href="/logout">Logout</a></span>
+	<?php
+		session_start();
+		if(!isset($_SESSION['email']) ){?>
+			<span class="right"><a href="registroHTML5.php">Registrarse </a></span>
+			<span class="right"><a href="Login.php"> Login</a></span>
+			<?php
+		}else{
+			?>
+			<span class="right">Sesión iniciada como <b><?php echo $_SESSION['email']?> </b></span>
+      <span class="right"><a href="Logout.php">Logout</a></span>
+      <?php
+		}
+		?>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href="layout.html">Inicio</a></spam>
+		<span><a href="layout.php">Inicio</a></spam>
 		<span><a href='creditos.html'>Creditos</a></spam>
 	</nav>
     <section class="main" id="s1">
@@ -38,6 +48,7 @@ $link = new mysqli($servername, $username, $password, "quiz", $dbport);
 //$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
 
 $preguntas = mysqli_query($link, "select * from pregunta" );
+echo '<div align="center">';
 echo '<table border=1> <tr> 
 	<th> Numero </th> 
 	<th> Email </th> 
@@ -52,6 +63,7 @@ while ($row = mysqli_fetch_array( $preguntas )) {
 }
 
 echo '</table>';
+echo '</div>';
 $ip=$_SERVER['REMOTE_ADDR'];
 $sql="INSERT INTO acciones (Tipo, Hora, IP) VALUES('VerPreguntas',CURTIME(), '$ip')";
 if (!mysqli_query($link ,$sql)){

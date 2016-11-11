@@ -60,7 +60,7 @@ textarea:focus {
     border-color: #00695c;
 }
 
-input[type=submit]{
+input[type=submit], input[type=button]{
     background-color: #00695c;
     border: none;
     color: white;

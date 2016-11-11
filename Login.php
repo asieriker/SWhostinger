@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>Preguntas</title>
+	<title>Login</title>
     <link rel='stylesheet' type='text/css' href='estilos/style.css' />
 	<link rel='stylesheet' 
 		   type='text/css' 
@@ -19,7 +19,8 @@
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='verPreguntas.php'>Preguntas</a></spam>
+		<span><a href='layout.php'>Inicio</a></spam>
+		<span><a href='verPreguntas.php'>Ver preguntas</a></spam>
 		<span><a href='creditos.html'>Creditos</a></spam>
 	</nav>
     <section class="main" id="s1">
@@ -32,7 +33,6 @@
 			
 			<input id="input" type="submit" value="Inicar sesion"/>
 		</form><br><br>
-		<p align="center"><a href="layout.html">Volver</a></p>
 
 	</div>
     </section>

@@ -172,7 +172,8 @@
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
-				<span><a href="layout.html">Inicio</a></spam>
+				<span><a href="layout.php">Inicio</a></spam>
+				<span><a href='verPreguntas.php'>Ver preguntas</a></spam>
 				<span><a href='creditos.html'>Creditos</a></spam>
 			</nav>
 	<section class="main" id="s1">

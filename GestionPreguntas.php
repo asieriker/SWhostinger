@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!isset($_SESSION['email'])){
+if(!isset($_SESSION['email']) ){
 echo "<SCRIPT type='text/javascript'> //not showing me this
      alert('No has iniciado sesion correctamente');
-     window.location.replace(\"layout.html\");
+     window.location.replace(\"layout.php\");
+    </SCRIPT>";
+}
+if( ($_SESSION['rol']=="profesor") ){
+echo "<SCRIPT type='text/javascript'> //not showing me this
+     alert('quieto Vadillo! Zona restringida');
+     window.location.replace(\"layout.php\");
     </SCRIPT>";
 }
 ?>
@@ -26,12 +32,13 @@ echo "<SCRIPT type='text/javascript'> //not showing me this
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-			<span class="right">Sesion iniciada como <?php echo $_SESSION['email']?> </span>
+			<span class="right">Sesión iniciada como <b><?php echo $_SESSION['email']?> </b> </span>
       		<span class="right"><a href="Logout.php">Logout</a></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='verPreguntas.php'>Preguntas</a></spam>
+		<span><a href='layout.php'>Inicio</a></span>
+		<span><a href='verPreguntas.php'>Ver preguntas</a></spam>
 		<span><a href='creditos.html'>Creditos</a></spam>
 	</nav>
     <section class="main" id="s1">
@@ -48,13 +55,12 @@ echo "<SCRIPT type='text/javascript'> //not showing me this
 	</form>
 
 	<form>  
-		<input type = "button" value = "Mostrar" onclick = "pedirDatos()">  
+		<input type = "button" value = "Mostrar preguntas XML" onclick = "pedirDatos()">  
 		<input type = "button" value = "Insertar pregunta" onclick = "verificar()">  
 	</form>  
 	<div id="insertado">  
 	</div> 
-	<div id="resultado">  <p>Apareceran las preguntas del documento XML</p> </div><br><br>
-	<a href="layout.html">Volver</a>
+	<div id="resultado" align="center">  <p>Apareceran las preguntas del documento XML</p> </div><br><br>
  
     </section>
 	<footer class='main' id='f1'>
