@@ -48,7 +48,7 @@
     <section class="main" id="s1">
     
 	<div>
-	Aqui se visualizan las preguntas y los creditos ...
+	<img src="imagenes/interes.png">
 	</div>
     </section>
 	<footer class='main' id='f1'>

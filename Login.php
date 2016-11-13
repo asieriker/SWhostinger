@@ -27,7 +27,7 @@
     
 	<div>
 		<form id="login" action="Login.php"   method="post">           
-		<h2>Identificación de usuario </h2><br>
+		<h3>Identificación de usuario </h3><br>
 			Email   : <input type="email"  required id="email" name="email" size="21" value="" /><br><br>               
 			Password: <input type="password" required id="pass" name="pass" size="21" value="" /><br><br>
 			
@@ -74,13 +74,13 @@
 			if($email=="web000@ehu.es"){
 				$_SESSION["rol"]="profesor";
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
-			    window.alert('Soy alumno, ah no, soy profe jjjj')
+			    window.alert('Bienvenido al sistema web000@ehu.es')
 			    window.location.href='Revision.php';
 			    </SCRIPT>");
 			}else{
 				$_SESSION["rol"]="alumno";
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
-    			window.alert('Soy alumno, el de arriba es un profe pero yo no')
+    			window.alert('Bienvenido al sistema $email')
 				 window.location.href='GestionPreguntas.php';
 			    </SCRIPT>");
 			

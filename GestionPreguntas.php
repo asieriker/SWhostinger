@@ -47,10 +47,10 @@ echo "<SCRIPT type='text/javascript'> //not showing me this
 		<div id="numPreguntas"><p>Aparecera el numero de preguntas</p></div>
 
 	<form id="pregunta" >     
-		<h2>Añadir pregunta </h2><br>                
-		<p> Asignatura: <input type="text" required id="asig" name="asig" size="50" value="" /><br><br> 		
-		<p> Pregunta: <input type="text" required id="preg" name="preg" size="50" value="" /><br><br>
-		<p> Respuesta: <input type="text" required id="resp" name="resp" size="50" value="" /><br><br>
+		<h3>Añadir pregunta </h3><br>                
+		<p> Asignatura*: <input type="text" required id="asig" name="asig" size="50" value="" /><br><br> 		
+		<p> Pregunta*: <input type="text" required id="preg" name="preg" size="50" value="" /><br><br>
+		<p> Respuesta*: <input type="text" required id="resp" name="resp" size="50" value="" /><br><br>
 		<p> Complejidad (1,5): <input type="number" min="1" max="5" id="comp" name="comp" size="50" value="" /><br><br>
 	</form>
 

@@ -38,39 +38,39 @@
     <section class="main" id="s1">
     
 	<div>
-	<?php
-$servername = getenv('IP');
-$username = getenv('C9_USER');
-$password = "";
-$dbport = 3306;
-// Create connection
-$link = new mysqli($servername, $username, $password, "quiz", $dbport);
-//$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
-
-$preguntas = mysqli_query($link, "select * from pregunta" );
-echo '<div align="center">';
-echo '<table border=1> <tr> 
-	<th> Numero </th> 
-	<th> Email </th> 
-	<th> Pregunta</th>
-	<th> Respuesta</th>
-	<th> Complejidad</th>
-</tr>';
-
-while ($row = mysqli_fetch_array( $preguntas )) {
-	echo '<tr><td>' . $row['Numero'] . '</td> <td>' . $row['Email'] . '</td>
-	 <td>' . $row['Pregunta'] . '</td> <td>' . $row['Respuesta'] .'</td> <td>' . $row['Complejidad'] . '</td></tr>';
-}
-
-echo '</table>';
-echo '</div>';
-$ip=$_SERVER['REMOTE_ADDR'];
-$sql="INSERT INTO acciones (Tipo, Hora, IP) VALUES('VerPreguntas',CURTIME(), '$ip')";
-if (!mysqli_query($link ,$sql)){
-	die('Error: ' . mysqli_error($link));
-}
-$preguntas->close(); //poner notacion no OO
-mysqli_close($link);
+<?php
+	$servername = getenv('IP');
+	$username = getenv('C9_USER');
+	$password = "";
+	$dbport = 3306;
+	// Create connection
+	$link = new mysqli($servername, $username, $password, "quiz", $dbport);
+	//$link = mysqli_connect("mysql.hostinger.es", "u410012855_root", "quepazaloko23", "u410012855_quiz");
+	
+	$preguntas = mysqli_query($link, "select * from pregunta" );
+	echo '<div align="center">';
+	echo '<table border=1> <tr> 
+		<th> Numero </th> 
+		<th> Email </th> 
+		<th> Pregunta</th>
+		<th> Respuesta</th>
+		<th> Complejidad</th>
+	</tr>';
+	
+	while ($row = mysqli_fetch_array( $preguntas )) {
+		echo '<tr><td>' . $row['Numero'] . '</td> <td>' . $row['Email'] . '</td>
+		 <td>' . $row['Pregunta'] . '</td> <td>' . $row['Respuesta'] .'</td> <td>' . $row['Complejidad'] . '</td></tr>';
+	}
+	
+	echo '</table>';
+	echo '</div>';
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$sql="INSERT INTO acciones (Tipo, Hora, IP) VALUES('VerPreguntas',CURTIME(), '$ip')";
+	if (!mysqli_query($link ,$sql)){
+		die('Error: ' . mysqli_error($link));
+	}
+	$preguntas->close(); //poner notacion no OO
+	mysqli_close($link);
 
 ?>
 	</div>
